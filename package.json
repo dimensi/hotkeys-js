@@ -1,7 +1,7 @@
 {
   "name": "@dimensi/hotkeys-js",
   "description": "A simple micro-library for defining and dispatching keyboard shortcuts. It has no dependencies.",
-  "version": "3.13.15",
+  "version": "4.0.0",
   "type": "module",
   "main": "dist/hotkeys.umd.js",
   "module": "dist/hotkeys.js",
