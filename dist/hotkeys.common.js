@@ -403,6 +403,43 @@ function eventHandler(event, handler, scope, element) {
 function dispatch(event, element) {
   const asterisk = _handlers['*'];
   let key = event.keyCode || event.which || event.charCode;
+
+  // LAYOUT INDEPENDENCE: Convert event.code to keyCode for layout-independent hotkeys
+  // This makes 'ctrl+a' work on Russian/German/any keyboard layout
+  if (event.code) {
+    const codeMap = {
+      KeyA: 65,
+      KeyB: 66,
+      KeyC: 67,
+      KeyD: 68,
+      KeyE: 69,
+      KeyF: 70,
+      KeyG: 71,
+      KeyH: 72,
+      KeyI: 73,
+      KeyJ: 74,
+      KeyK: 75,
+      KeyL: 76,
+      KeyM: 77,
+      KeyN: 78,
+      KeyO: 79,
+      KeyP: 80,
+      KeyQ: 81,
+      KeyR: 82,
+      KeyS: 83,
+      KeyT: 84,
+      KeyU: 85,
+      KeyV: 86,
+      KeyW: 87,
+      KeyX: 88,
+      KeyY: 89,
+      KeyZ: 90
+    };
+    if (codeMap[event.code]) {
+      key = codeMap[event.code];
+    }
+  }
+
   // Ensure that when capturing keystrokes in modern browsers,
   // uppercase and lowercase letters (such as R and r) return the same key value.
   // https://github.com/jaywcjlove/hotkeys-js/pull/514
